@@ -24,13 +24,19 @@ export default class Search extends Component {
   };
 
   filteredList = event => {
-    var charInput = event.target.value.toLowerCase();
-    var updatedList = this.state.initialList;
-    updatedList = updatedList.filter(item => {
-      return item.name.toLowerCase().search(charInput) !== -1;
-    });
-    this.setState({
-      list: [...updatedList]
+    var charInput = event.target.value;
+    this.setState((prevState) => {
+      let numberInput = parseInt(charInput, 10);
+      var updatedList = prevState.initialList;
+      if (isNaN(numberInput)) {
+        charInput = charInput.toLowerCase();
+        updatedList = updatedList.filter(item => item.name.toLowerCase().search(charInput) !== -1 || item.note.toLowerCase().search(charInput) !== -1);
+      } else {
+        updatedList = updatedList.filter(item => item.table === numberInput);
+      }
+      return {
+        list: [...updatedList]
+      }
     });
   };
 
@@ -45,21 +51,10 @@ export default class Search extends Component {
       let idx = updatedList.indexOf(selectedGuest);
       updatedList[idx].isChecked = isSeated;
       return {
-        initialList: updatedList
+        initialList: updatedList,
+        numGuestChecked: isSeated ? prevState.numGuestChecked + 1 : prevState.numGuestChecked - 1
       };
     });
-  };
-
-  sumOfGuest = isChecked => {
-    if (isChecked) {
-      this.setState({
-        numGuestChecked: this.state.numGuestChecked - 1
-      });
-    } else {
-      this.setState({
-        numGuestChecked: this.state.numGuestChecked + 1
-      });
-    }
   };
 
   render() {
@@ -70,13 +65,20 @@ export default class Search extends Component {
             <input
               type="text"
               className="form-control"
-              placeholder="Search name here"
+              placeholder="Search..."
               onChange={this.filteredList}
             />
           </form>
           <h2 className="numGuest">
+            Total Number of Guests: {this.state.initialList.length}
+            <br/>
             Number of Guest Checked: {this.state.numGuestChecked}
           </h2>
+          {
+            this.state.initialList.length > 0 && 
+            this.state.numGuestChecked === this.state.initialList.length &&
+            <h2>All Guest Are Seated</h2>
+          }
           <GuestList
             list={this.state.list}
             handleClick={this.handleClick}

@@ -3,7 +3,7 @@ import ListItem from "./ListItem";
 
 export default class DisplayList extends Component {
   render() {
-    const { list, onToggleIsChecked, sumOfGuest } = this.props;
+    const { list, onToggleIsChecked } = this.props;
     return (
       <div>
         <ul className="list-group">
@@ -13,7 +13,6 @@ export default class DisplayList extends Component {
                 key={item.index}
                 item={item}
                 onToggleIsChecked={onToggleIsChecked}
-                sumOfGuest={sumOfGuest}
               />
             );
           })}
