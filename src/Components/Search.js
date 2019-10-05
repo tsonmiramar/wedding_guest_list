@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import jsonGuest from "../guests.json";
 import GuestList from "./GuestList";
 
 export default class Search extends Component {
@@ -13,13 +12,15 @@ export default class Search extends Component {
   }
 
   getItems = async () => {
-    // let response = await fetch("asdfa", { method: "GET" });
-    // let jsonGuest = await response.json();
-    let fetchedList = jsonGuest.map(guest => ({ ...guest, isChecked: false }));
-    this.setState({
-      initialList: fetchedList,
-      list: fetchedList
-    });
+    let response = await fetch(`https://wedding-guestlist-e02f2.firebaseio.com/masterSheet.json?auth=yTde7tOrhsHrpg600pwqyESn7quBtQicJtpDnffa`)
+    if (response.ok){
+      let result = await response.json();
+      let fetchedList = result.map(guest => ({ ...guest, isChecked: false }));
+      this.setState({
+        initialList: fetchedList,
+        list: fetchedList
+      });
+    }    
   };
 
   filteredList = event => {

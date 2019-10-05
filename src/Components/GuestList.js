@@ -11,9 +11,7 @@ export default class DisplayList extends Component {
             return (
               <ListItem
                 key={item.index}
-                name={item.name}
-                table={item.table}
-                isChecked={item.isChecked}
+                item={item}
                 onToggleIsChecked={onToggleIsChecked}
                 sumOfGuest={sumOfGuest}
               />
