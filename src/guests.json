@@ -1,0 +1,28 @@
+[
+  {
+    "name": "Johnny",
+    "table": 1,
+    "isChecked": false
+  },
+
+  {
+    "name": "Jack",
+    "table": 1,
+    "isChecked": false
+  },
+  {
+    "name": "Kevin",
+    "table": 2,
+    "isChecked": false
+  },
+  {
+    "name": "Mike",
+    "table": 5,
+    "isChecked": false
+  },
+  {
+    "name": "Michael",
+    "table": 2,
+    "isChecked": false
+  }
+]

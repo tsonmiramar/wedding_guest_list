@@ -1,0 +1,55 @@
+body {
+  font-family: "Roboto Slab", serif;
+}
+
+.searchComp {
+  text-align: center;
+}
+
+.headerComp {
+  font-size: 3rem;
+  width: 500px;
+  padding: 20px;
+  margin: auto;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.form-control {
+  width: 300px;
+  text-align: center;
+  margin: auto;
+}
+
+.listItem {
+  font-size: 1.5em;
+  width: 50%;
+  margin: auto;
+}
+
+.big-checkbox {
+  font-size: 1.3rem;
+}
+
+.checkbox-style {
+  margin-left: 3rem;
+}
+
+.numGuest {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.seated {
+  text-decoration: line-through;
+}
+
+.list-group {
+  width: 50%;
+  margin: auto;
+}
+
+.hover-on:hover {
+  background-color: #446cb3;
+  color: #fff;
+}
